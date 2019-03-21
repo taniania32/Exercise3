@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="//datatables.net/download/build/nightly/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+  
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="//datatables.net/download/build/nightly/jquery.dataTables.js"></script>
+
+		<meta charset=utf-8 />
+        <title>DataTables</title>
+        
+        	</head>
+	<body>
+        
+                <table id="table1" class="display table-bordered" style="width:100%"> 
+                    <thead class="text-center"> <tr> 
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Rotation Period</th>
+                            <th class="text-center">Orbital Period</th>
+                            <th class="text-center">Diameter</th>
+                            <th class="text-center">Climate</th>
+                            <th class="text-center">Gravity</th>
+                            <th class="text-center">Terrain</th>
+                            <th class="text-center">Surface Water</th>
+                            <th class="text-center">Population</th>
+                            <th class="text-center">Residents</th>
+                            <th class="text-center">Films</th>
+                            <th class="text-center">Created</th>
+                            <th class="text-center">Edited</th>
+                            <th class="text-center">Url</th>
+                         </tr> </thead> 
+                        <tbody>
+
+                        </tbody>
+                    </table>
+    </body>
+  
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.js"></script>
+</html>
+
+<script>
+
+    $.getJSON('json/data.json', function(response) {
+    count = response.count,
+    next = response.next,
+    previous = response.previous,
+    $('#count').append('<label class="card-text">' + response.count +'</label>'),
+    $('#next').append('<div class="card-text">' + response.next +'</div>'),
+    $('#prev').append('<a class="card-text">' + response.previous +'</a>'),
+ 
+    $('#table1').DataTable({
+    processing: true,
+    data: response.results,
+    columns: [
+      { data: "name"},
+      { data: "rotation_period"},
+      { data: "orbital_period"},
+      { data: "diameter"},
+      { data: "climate"},
+      { data: "gravity"},
+      { data: "terrain"},
+      { data: "surface_water"},
+      { data: "population"},
+      { data: "residents"},
+      { data: "films"},
+      { data: "created"},
+      { data: "edited"},
+      { data: "url"}
+    ]
+  });
+  window.someGlobalOrWhatever = response.balance
+});
+            </script>
+   
